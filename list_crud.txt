@@ -1,0 +1,23 @@
+*-- install virtual env for local apps
+    *-- sudo pip install virtualenv
+    **-- which python3 **pwd
+    ***-- virtualenv env
+    ****-- source Env/bin/activate
+*-- first install django 
+    *-- second running django --python manage.py runserver
+    *-- three install connection for postgres 
+        **--pip install django psycopg2
+    *-- configuration db
+        *-- setting.py
+            *-- DATABASES = {
+                    'default': {
+                        'ENGINE': 'django.db.backends.postgresql',
+                        'NAME': 'employee',
+                        'USER': 'postgres',
+                        'PASSWORD':'postgres',
+                        'HOST': 'localhost'
+                    }
+                }
+            
+*-- create project --  python manage.py employee_register    
+*-- 

@@ -1,0 +1,51 @@
+{% extends "employee_register/base.html" %}
+
+{% block content %}
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Fullname</td>
+            <td>Mobile</td>
+            <td>Position</td>
+            <td>
+                <a href="{% url 'employee_insert' %}" class="btn btn-outline-success">
+                    <li class="fas fa-plus"></li>
+                </a>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Cara Pertama -->
+        <!-- {% for employee in employees.all %}
+            <tr>
+                <td>{{ employee.fullname }}</td>
+                <td>{{ employee.mobile }}</td>
+                <td>{{ employee.position_id }}</td>
+                <td>
+                <a href="{% url 'employee_update' employee.id %} "><li class="fas fa-edit"></li></a>&nbsp;
+                <a href=""><li class="fas fa-trash"></li></a>
+            </td>
+            </tr>
+        {% endfor %} -->
+        {% for employee in employee_list %}
+        <tr>
+            <td>{{ employee.fullname }}</td>
+            <td>{{ employee.mobile }}</td>
+            <td>{{ employee.position }}</td>
+            <td>
+                    <form action="{% url 'employee_delete' employee.id %}" method="post">
+                <a href="{% url 'employee_update' employee.id %} ">
+                    <li class="fas fa-edit"></li>
+                </a>
+                
+                    {% csrf_token %}
+                    <button type="submit" class="btn">
+                        <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
